@@ -2,6 +2,20 @@
 
 순수 함수 모듈: [`src/lib/match.ts`](../src/lib/match.ts) · 타입: [`src/lib/types.ts`](../src/lib/types.ts) · 데모: `node scripts/demo-match.ts`
 
+## 파이프라인
+
+```mermaid
+flowchart TD
+    P["브랜드 프로필<br/>(업력·지역·사업자유형·수출경험·관심분야)"] --> HF{"하드 필터<br/>hardFilter()"}
+    HF -->|자격 충족| SC["적합도 점수<br/>score() · 0~100"]
+    HF -->|자격 미달| RJ["미충족 + 한국어 사유<br/>예: 업력 초과 / 지역 불일치"]
+    SC --> SORT["정렬<br/>eligible 우선 → 점수 내림차순"]
+    RJ --> SORT
+    SORT --> CARD["결과 카드<br/>점수·적합칩·D-day·왜 적합/주의 자격요건"]
+```
+
+> 핵심 의도: 자격 미달은 점수로 깎는 게 아니라 **분리하고 '왜 안 되는지'를 붙인다.**
+
 ## 2단계 구조
 
 ### 1) 하드 필터 — `hardFilter()`
