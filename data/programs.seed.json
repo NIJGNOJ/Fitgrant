@@ -4,7 +4,7 @@
     "as_of_date": "2026-06-13",
     "note": "verification='confirmed'는 2025~2026년 공식 출처로 확인됨, 'needs_review'는 과거 공고/언론/2차출처 기준이라 최신 원문 재확인 필요. 금액·일정·자격은 매년 변동됨. 대부분 사업이 2025년 공고가 최신본이며 매년 유사 재공고되는 패턴 → 신청 시 당해연도 공고 재확인 필수.",
     "schema_version": "0.3",
-    "count": 65
+    "count": 64
   },
   "programs": [
     {
@@ -47,14 +47,14 @@
         "region": [
           "전국"
         ],
-        "notes": "디자이너관/기업브랜드관 트랙별 자격·심사기준 상이. 정확한 모집 일정과 자격요건은 26 F/W 모집공고 원문 재확인 필요."
+        "notes": "디자이너관/기업브랜드관/트레이드쇼 트랙별 자격 상이. 26 F/W 기업브랜드관 신청 2025-11-03~11-28(행사 2026.2 DDP). 트레이드쇼는 의류·잡화 독립 브랜드 업력 1년 이상 필요. 차기 일정·소재지 요건은 모집공고 확인."
       },
       "fashion_specific": true
     },
     {
       "id": "kfashion-global-popup-2026",
       "title": "K-패션 브랜드 글로벌 팝업 지원사업",
-      "agency": "서울특별시 (경제실 뷰티패션산업과) / 운영주체 확인 필요",
+      "agency": "서울경제진흥원(SBA)",
       "operator": null,
       "category": [
         "해외수출"
@@ -67,14 +67,14 @@
         "현금",
         "해외팝업"
       ],
-      "support_amount": "해외 팝업비 기업당 700만원",
+      "support_amount": "해외 팝업비 기업당 700만원 (자부담 300만원 이상 매칭 필수)",
       "support_amount_max": 7000000,
       "apply_start": "2026-04-07",
       "apply_end": "2026-04-27",
       "apply_cycle": "연 1회 (추정)",
       "source_url": "https://www.nextunicorn.kr/support-programs/11670c7fe6734835",
       "as_of_date": "2026-06-13",
-      "verification": "needs_review",
+      "verification": "confirmed",
       "eligibility": {
         "min_years": null,
         "max_years": null,
@@ -83,11 +83,11 @@
           "법인"
         ],
         "max_revenue": null,
-        "export_required": false,
+        "export_required": true,
         "region": [
           "서울"
         ],
-        "notes": "2026년 모집 마감(4/27). 주관기관이 서울시인지 무역협회(KITA)인지 출처마다 달라 확인 필요. 대상은 서울 소재 중소기업으로 안내됨. 차년도 재모집 가능성 있어 마감 알림 대상."
+        "notes": "운영주체 서울경제진흥원(SBA). 신청일 기준 서울 소재 사업장. 2시즌 이상 컬렉션 제작 + 국내외 세일즈 경험, 수출실적증명원(최근 해외매출) 제출 필수. 자부담 300만원 이상 매칭. 2026 모집 4/7~4/27(종료), 차년도 재모집 알림 대상."
       },
       "fashion_specific": true
     },
@@ -128,39 +128,7 @@
         "region": [
           "서울"
         ],
-        "notes": "자격(서울 소재 패션 제조 소공인·브랜드 보유·업력 1년 이상)과 금액은 2020~21년 공고 기준. 2026 최신 공고로 반드시 재확인."
-      },
-      "fashion_specific": true
-    },
-    {
-      "id": "global-fashion-biz",
-      "title": "글로벌 패션 비즈니스 지원사업",
-      "agency": "서울특별시 (경제실 뷰티패션산업과)",
-      "operator": null,
-      "category": [
-        "해외수출"
-      ],
-      "track": [],
-      "summary": "패션 브랜드의 글로벌 비즈니스 연계를 지원하는 사업. (세부 내용은 공고 첨부 문서 확인 필요)",
-      "support_type": [],
-      "support_amount": null,
-      "support_amount_max": null,
-      "apply_start": null,
-      "apply_end": null,
-      "apply_cycle": null,
-      "source_url": "https://opengov.seoul.go.kr/public/84657",
-      "as_of_date": "2026-06-13",
-      "verification": "needs_review",
-      "eligibility": {
-        "min_years": null,
-        "max_years": null,
-        "biz_type": [],
-        "max_revenue": null,
-        "export_required": false,
-        "region": [
-          "서울"
-        ],
-        "notes": "정보소통광장 목록만 확인됨. 지원 대상·내용·규모 미확보 — 공고 원문 또는 담당부서 문의로 보강 필요. 큐레이션 우선순위 낮음."
+        "notes": "자격(서울 소재·업력 1년 이상)·금액은 2020~21년 공고 기준. 2021 이후 패션 특화 아마존 입점 공고 미확인 — 2026 운영 지속 불명(폐지/통합 가능성). 매칭 노출 시 주의. (2026 아마존 액셀러레이터는 뷰티·건기식 대상의 별개 사업)"
       },
       "fashion_specific": true
     },
@@ -186,12 +154,12 @@
       ],
       "support_amount": "공간·컨설팅·시제품·룩북·판로 현물 지원 (디자이너 브랜드 약 40개사)",
       "support_amount_max": null,
-      "apply_start": null,
-      "apply_end": null,
-      "apply_cycle": "연 1회 (추정)",
+      "apply_start": "2026-02-09",
+      "apply_end": "2026-02-27",
+      "apply_cycle": "연 1회",
       "source_url": "https://www.sfhub.or.kr/bbs/business/143",
       "as_of_date": "2026-06-13",
-      "verification": "needs_review",
+      "verification": "confirmed",
       "eligibility": {
         "min_years": null,
         "max_years": null,
@@ -204,7 +172,7 @@
         "region": [
           "서울"
         ],
-        "notes": "동대문 거점 기반 디자이너 브랜드 대상. 해외진출보다 브랜드 육성 성격이 강함. 2025 공고 기준."
+        "notes": "동대문 거점 신진 디자이너 브랜드 약 40개사. 운영 서울패션허브. 2026 디자이너 브랜드 트랙 모집 2/9~2/27(종료). 별도 '동대문 도매상인 브랜드 육성' 트랙(2/9~3/8) 존재."
       },
       "fashion_specific": true
     },
@@ -605,8 +573,8 @@
       ],
       "support_amount": "해외 전시 참가·글로벌 쇼룸 입점 등 B2B 마케팅 비용 지원 (브랜드별 한도 미확인)",
       "support_amount_max": null,
-      "apply_start": null,
-      "apply_end": "2025-03-18",
+      "apply_start": "2026-04-13",
+      "apply_end": "2026-05-06",
       "apply_cycle": "연 1회",
       "source_url": "https://www.koreafashion.org",
       "as_of_date": "2026-06-13",
@@ -623,7 +591,7 @@
         "region": [
           "전국"
         ],
-        "notes": "해외 진출 희망 패션 브랜드(B2B 마케팅). 금액·신청 시작일·자격은 한국패션산업협회(02-528-0108) 공고 확인. 출처가 보도자료라 1차 출처 확인 권장."
+        "notes": "2026 K-섬유패션 글로벌 브랜드 육성 통합공고(4/13~5/6, 종료)의 글로벌 전시/B2B2C 마케팅 트랙. 브랜드별 한도는 한국패션산업협회(02-528-0108) 공고 확인."
       },
       "fashion_specific": true
     },
@@ -648,8 +616,8 @@
       ],
       "support_amount": "시제품·패턴·소재 개발 및 국내외 마케팅 비용 지원 (컨소시엄별 한도 미확인)",
       "support_amount_max": null,
-      "apply_start": null,
-      "apply_end": "2025-03-18",
+      "apply_start": "2026-04-13",
+      "apply_end": "2026-05-06",
       "apply_cycle": "연 1회",
       "source_url": "https://www.koreafashion.org",
       "as_of_date": "2026-06-13",
@@ -666,7 +634,7 @@
         "region": [
           "전국"
         ],
-        "notes": "K-브랜드·K-소재·K-생산 전부 국내 업체로 구성된 컨소시엄 요건. 금액·자격은 한국패션산업협회 공고 확인. 출처가 보도자료."
+        "notes": "2026 K-섬유패션 글로벌 브랜드 육성 통합공고(4/13~5/6, 종료)의 한 트랙. K-브랜드·K-소재·K-생산 100% 국내 업체 컨소시엄 필수. 컨소시엄별 금액은 한국패션산업협회 공고 확인."
       },
       "fashion_specific": true
     },
@@ -794,7 +762,7 @@
         "region": [
           "전국"
         ],
-        "notes": "국고지원 비율·부담금·신청기간 등 미확인(프리뷰인서울 공고 확인 필요). 소재 중심 전시회."
+        "notes": "2026 NYC 한국관은 KOFOTI 자체 기획·운영으로 국고지원 대상이 아니었을 가능성(춘계 24개사 참가). '수출컨소시엄/국고지원' 전제 재확인 필요. 국고 70% 지원되는 Texworld Paris(별도 항목)와 혼동 주의."
       },
       "fashion_specific": true
     },
@@ -1299,7 +1267,7 @@
         "region": [
           "경기"
         ],
-        "notes": "경기도 소재 섬유·패션 기업. 인증 종류·금액·일정은 원문(PDF) 확인 필요(본문 미열람)."
+        "notes": "경기도 내 본사 또는 공장 소재 섬유·패션 기업. 운영 한국섬유소재연구원. 친환경 글로벌 인증(OEKO-TEX·GRS·GOTS·bluesign 등) 취득 지원. 2025 접수 4월. 2026 정확 일정·기업당 금액(과거 ~1,500만원 언급)은 공고 본문 확인."
       },
       "fashion_specific": true
     },
@@ -1341,7 +1309,7 @@
         "region": [
           "부산"
         ],
-        "notes": "부산 지역 디자이너 브랜드 대상으로 추정. 모집 공고·자격·금액은 부산테크노파크/부산섬유패션산업연합회 공고 확인. 출처가 언론 보도."
+        "notes": "부산섬유패션산업연합회 운영(부산 동구·금정구 패션 거점). 2개년 사업으로 2025년(2차년도) 12월 종료. 2026 지속/재공모 여부 불명. 문의 051-744-6321."
       },
       "fashion_specific": true
     },
@@ -2067,15 +2035,15 @@
       ],
       "support_amount": null,
       "support_amount_max": null,
-      "apply_start": null,
-      "apply_end": null,
+      "apply_start": "2026-04-13",
+      "apply_end": "2026-05-06",
       "apply_cycle": "연 1회",
       "source_url": "https://www.koreafashion.org",
       "as_of_date": "2026-06-13",
       "verification": "needs_review",
       "eligibility": {
         "min_years": null,
-        "max_years": null,
+        "max_years": 7,
         "biz_type": [
           "개인",
           "법인"
@@ -2085,7 +2053,7 @@
         "region": [
           "전국"
         ],
-        "notes": "패션 특화 신진 브랜드 육성. 일부 트랙은 글로벌 진출 성격이라 해외수출과 부분 중복. 자격·일정·금액은 한국패션산업협회 공고 확인(2026 공고 약 4/13)."
+        "notes": "'K-패션오디션'의 리브랜딩 명칭(THE NEXT K-Fashion Awards). ⚠️기존 confirmed 항목 kfa-k-fashion-audition-2025와 동일/중복 사업일 가능성 — 통합·삭제 여부 도메인 검토 필요. 2026 K-섬유패션 통합공고(4/13~5/6) 트랙. 챌린저 업력 7년 이하. 기업당 금액은 협회 공고 확인."
       },
       "fashion_specific": true
     },
@@ -2697,7 +2665,7 @@
         "region": [
           "대구"
         ],
-        "notes": "대구 지역 디자이너 브랜드. 행사별 참여 모집 별도. 출처가 보도자료라 공식 공고·자격·일정 확인 필요."
+        "notes": "대구광역시 + 대구경북패션사업협동조합 주관. 2026 운영 확인(연중 릴레이, 5~11월 순차 개최). 지역 디자이너 브랜드 대상. 모집 자격·금액 미공개 — 조합 직접 문의 필요."
       },
       "fashion_specific": true
     }
