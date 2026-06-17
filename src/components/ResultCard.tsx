@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { ChevronDown, ExternalLink, Check, AlertTriangle, Sparkles } from "lucide-react";
+import { ChevronDown, ExternalLink, Check, AlertTriangle, Sparkles, Bookmark, BookmarkCheck } from "lucide-react";
 import type { MatchResult, Program } from "@/lib/types.ts";
 import { isRecurring } from "@/lib/match.ts";
 import { explain, type Explanation } from "@/lib/explain.ts";
@@ -33,7 +33,15 @@ function dDayLabel(d: number | null, p: Program): { text: string; variant: Badge
   return { text: `D-${d}`, variant: "secondary" };
 }
 
-export default function ResultCard({ r }: { r: MatchResult }) {
+export default function ResultCard({
+  r,
+  saved,
+  onToggleSave,
+}: {
+  r: MatchResult;
+  saved: boolean;
+  onToggleSave: () => void;
+}) {
   const [open, setOpen] = useState(false);
   const p = r.program;
   const dd = dDayLabel(r.deadlineDday, p);
@@ -60,7 +68,20 @@ export default function ResultCard({ r }: { r: MatchResult }) {
   }, [open, r]);
 
   return (
-    <Card className="overflow-hidden p-0">
+    <Card className="relative overflow-hidden p-0">
+      <button
+        type="button"
+        onClick={onToggleSave}
+        aria-label={saved ? "관심사업 저장 해제" : "관심사업 저장"}
+        aria-pressed={saved}
+        className="absolute right-2.5 top-2.5 z-10 rounded-full p-1.5 text-muted-foreground/50 transition-colors hover:bg-accent hover:text-brand"
+      >
+        {saved ? (
+          <BookmarkCheck className="size-5 text-brand" />
+        ) : (
+          <Bookmark className="size-5" />
+        )}
+      </button>
       <Collapsible open={open} onOpenChange={setOpen}>
         <CollapsibleTrigger className="w-full cursor-pointer p-5 text-left transition-colors hover:bg-accent/50">
           <div className="flex items-start gap-3">
@@ -97,7 +118,7 @@ export default function ResultCard({ r }: { r: MatchResult }) {
             </div>
             <ChevronDown
               className={cn(
-                "size-5 shrink-0 text-muted-foreground/50 transition-transform",
+                "mr-7 size-5 shrink-0 self-center text-muted-foreground/50 transition-transform",
                 open && "rotate-180"
               )}
             />
