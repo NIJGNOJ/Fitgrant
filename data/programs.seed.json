@@ -340,7 +340,7 @@
         "region": [
           "전국"
         ],
-        "notes": "업무협약 2025-12-18 체결. 모집 일정·참가비·자격은 미공개, KITA(kita.net) 공고 확인 필요."
+        "notes": "현대백화점·메디퀘스트 3자 MOU, 일본·대만 등 대형쇼핑몰 약 40개사(패션·뷰티). 2026 참가기업 모집 ~1/7 마감(종료), 팝업 운영 2026.3~12. 업력·지역·수출·금액은 공고 본문 미명시."
       },
       "fashion_specific": false
     },
@@ -368,7 +368,7 @@
       "apply_cycle": "상시",
       "source_url": "https://kr.tradekorea.com/kr/marketing/contents/info.do",
       "as_of_date": "2026-06-13",
-      "verification": "needs_review",
+      "verification": "confirmed",
       "eligibility": {
         "min_years": null,
         "max_years": null,
@@ -381,7 +381,7 @@
         "region": [
           "전국"
         ],
-        "notes": "상시 운영 플랫폼, 부가 지원사업은 연중 별도 모집. 세부 금액·자격은 kita.net·디지털수출지원센터 공고 확인."
+        "notes": "KITA 운영 B2B 플랫폼(tradeKorea). 플랫폼 입점·바이어 매칭 무료, 월별 유망 바이어 매칭 등 상시. 부가 마케팅 지원은 사업별 상이."
       },
       "fashion_specific": false
     },
@@ -424,7 +424,7 @@
         "region": [
           "전국"
         ],
-        "notes": "프로그램(전시회별 단체관·수출상담회·무역사절단)마다 일정·지원·참가비 상이. 패션 해당 프로그램은 KITA 일정 페이지에서 개별 확인."
+        "notes": "단일 사업이 아닌 KITA B2B 해외마케팅·바이어매칭 사업군 총칭(수출상담회·무역사절단 등 개별 공고 다수). 프로그램별 일정·자격·참가비 상이 — kita.net 개별 확인."
       },
       "fashion_specific": false
     },
@@ -827,12 +827,12 @@
       ],
       "support_amount": null,
       "support_amount_max": null,
-      "apply_start": "2025-01-06",
-      "apply_end": "2025-03-31",
+      "apply_start": "2026-01-02",
+      "apply_end": "2026-03-31",
       "apply_cycle": "연 1회 (예산 소진 시 조기 종료)",
       "source_url": "https://www.bizinfo.go.kr/web/lay1/bbs/S1T122C128/AS/74/view.do?pblancId=PBLN_000000000103654",
       "as_of_date": "2026-06-13",
-      "verification": "needs_review",
+      "verification": "confirmed",
       "eligibility": {
         "min_years": null,
         "max_years": null,
@@ -845,7 +845,7 @@
         "region": [
           "전국"
         ],
-        "notes": "전세계 수출실적 0달러 내수기업 또는 1~10만달러 미만 초보기업. 산업부(KOTRA)와 별도 KOSME 버전이 있어 신청 채널 확인 필요. 2026 공고 미확인."
+        "notes": "중소·중견 제조/제조관련서비스/지식기반서비스업. 직수출실적 2025년 1천불 미만(내수)~10만불(초보) 대상이라 무실적도 신청 가능. 수출 전과정 컨설팅·바우처. 산업부 공고 2026-003호, KITA/KOTRA 신청."
       },
       "fashion_specific": false
     },
@@ -913,10 +913,10 @@
       "support_amount_max": null,
       "apply_start": null,
       "apply_end": null,
-      "apply_cycle": "전시회·상담회별 수시",
+      "apply_cycle": "2026 전시회별 수시 (2~12월)",
       "source_url": "https://www.sme-expo.go.kr",
       "as_of_date": "2026-06-13",
-      "verification": "needs_review",
+      "verification": "confirmed",
       "eligibility": {
         "min_years": null,
         "max_years": null,
@@ -929,7 +929,7 @@
         "region": [
           "전국"
         ],
-        "notes": "중소기업기본법 제2조 중소기업. 2024 통합공고 기준이라 2025~2026 일정·지원율 변동 가능. 중소기업 해외전시포탈(sme-expo.go.kr)에서 행사별 확인."
+        "notes": "중기부 2026 통합공고 포함. 중소기업 해외전시포털 모집. 사전준비·현지파견·사후관리 공통비용 최대 70%. 업종별 협단체 주관(중기중앙회 02-2124-3291)."
       },
       "fashion_specific": false
     },
@@ -951,14 +951,14 @@
         "컨설팅",
         "해외세일즈"
       ],
-      "support_amount": "현지 사무공간(독립실 최대 3년 / 공유오피스 최대 60일) 및 프로그램 지원",
+      "support_amount": "현지 임차료 1년차 80%·2년차 50% 지원(독립 사무공간+공용회의실, 최대 3년)",
       "support_amount_max": null,
       "apply_start": null,
       "apply_end": null,
       "apply_cycle": "상시",
       "source_url": "https://www.kosmes.or.kr/nsh/SH/SBI/SHSBI101M0.do",
       "as_of_date": "2026-06-13",
-      "verification": "needs_review",
+      "verification": "confirmed",
       "eligibility": {
         "min_years": null,
         "max_years": null,
@@ -971,7 +971,7 @@
         "region": [
           "전국"
         ],
-        "notes": "지원제외 업종 외 중소기업. 입주료 자부담 여부·세부 자격은 KOSME 공고 확인."
+        "notes": "중진공(KOSME) 운영, 14개국 22개 도시. 해외진출 희망 중소기업. 상시 모집."
       },
       "fashion_specific": false
     },
@@ -1013,7 +1013,7 @@
         "region": [
           "전국"
         ],
-        "notes": "중소기업기본법 제2조 중소기업. 위탁판매/입점/마케팅 중 택1. 지원비율은 차수별 변동 가능. 2026 별도 진행."
+        "notes": "아마존·쇼피 등 글로벌쇼핑몰 입점(패션 적용 가능). 2026 운영 확인, 수행기관 모집 ~2/27. 참여기업 접수일·지원율(%)은 2026 공고 본문 확인 필요."
       },
       "fashion_specific": false
     },
@@ -1120,14 +1120,14 @@
         "컨설팅",
         "현금"
       ],
-      "support_amount": null,
+      "support_amount": "9개 글로벌 플랫폼(아마존·틱톡샵·큐텐·라쿠텐·쇼피·샤오홍슈 등) 입점·광고·인플루언서·콘텐츠·라이브커머스 솔루션(현물)",
       "support_amount_max": null,
       "apply_start": null,
       "apply_end": "2026-04-08",
       "apply_cycle": "연 1회 (연초)",
       "source_url": "https://www.sba.seoul.kr",
       "as_of_date": "2026-06-13",
-      "verification": "needs_review",
+      "verification": "confirmed",
       "eligibility": {
         "min_years": null,
         "max_years": null,
@@ -1140,7 +1140,7 @@
         "region": [
           "서울"
         ],
-        "notes": "서울 소재 자체 브랜드 보유 중소기업. 모집분야가 뷰티·식품·리빙으로 소개되어 패션 명시는 불확실. 패션·잡화 적용 여부·플랫폼별 금액은 공식 공고 확인."
+        "notes": "서울 소재 자체브랜드 보유 중소기업. 2026 참여기업 840개사 공개모집(~4/8). 업종 제한 명시 없어 패션·잡화 적용 가능."
       },
       "fashion_specific": false
     },
@@ -1207,14 +1207,14 @@
         "컨설팅",
         "현금"
       ],
-      "support_amount": null,
-      "support_amount_max": null,
-      "apply_start": null,
-      "apply_end": null,
+      "support_amount": "연 최대 7,000만원, 3년 최대 2억 1,000만원",
+      "support_amount_max": 70000000,
+      "apply_start": "2026-01-12",
+      "apply_end": "2026-02-19",
       "apply_cycle": null,
       "source_url": "https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000103441",
       "as_of_date": "2026-06-13",
-      "verification": "needs_review",
+      "verification": "confirmed",
       "eligibility": {
         "min_years": null,
         "max_years": null,
@@ -1227,7 +1227,7 @@
         "region": [
           "경기"
         ],
-        "notes": "경기도 본사 소재 수출(예정) 중소기업. 패션 전용은 아니나 디자인 개발 핵심이라 패션·잡화 적용 가능. 일정·금액은 원문 확인."
+        "notes": "경기도 본사(남부/북부 센터 구분) 유망 중소기업, 수출실적 보유 또는 수출예정. 특허·상표·디자인 IP 기반 해외진출. 경기TP 운영."
       },
       "fashion_specific": false
     },
@@ -1470,7 +1470,7 @@
         "region": [
           "전국"
         ],
-        "notes": "산업디자인전문회사 신고 기업 대상 추정. 신청기간·금액·내용 미확인 — 공고 원문 확인 필요."
+        "notes": "산업디자인전문회사 신고기업 대상 추정(패션 디자인전문기업 신고 시 적용 가능성). 2026 공고 게시(KIDP 2026-20호). 자격·금액·일정 본문 확인 필요."
       },
       "fashion_specific": false
     },
@@ -1742,12 +1742,12 @@
       ],
       "support_amount": "사업화 자금 평균 약 1.2억원, 최대 2억원",
       "support_amount_max": 200000000,
-      "apply_start": null,
-      "apply_end": null,
+      "apply_start": "2026-01-23",
+      "apply_end": "2026-02-13",
       "apply_cycle": "연 1회",
       "source_url": "https://www.bizinfo.go.kr/web/lay1/bbs/S1T122C128/AS/74/view.do?pblancId=PBLN_000000000117820",
       "as_of_date": "2026-06-13",
-      "verification": "needs_review",
+      "verification": "confirmed",
       "eligibility": {
         "min_years": 3,
         "max_years": 7,
@@ -1760,7 +1760,7 @@
         "region": [
           "전국"
         ],
-        "notes": "기본 3년 초과 7년 이내. 신산업 최대 10년, 3년 미만 패스트트랙 예외 있음. 신청기간은 공고 확인(2026 일반형 약 300개사)."
+        "notes": "창업 3년 초과~7년 이내(신산업 10년, 패스트트랙 3년 미만 가능). 사업화자금 평균 1.2억·최대 2억."
       },
       "fashion_specific": false
     },
@@ -1844,7 +1844,7 @@
         "region": [
           "전국"
         ],
-        "notes": "예비 소상공인(미창업자). 일정·금액은 2025 기준, 2026 모집 재확인. 소상공인24 접수."
+        "notes": "예비 소상공인(미창업자). 2026 통합공고 내 존재하나 개별 모집 일정 미확정. 사업화자금 최대 4천만(평균 2천만). 소상공인24 접수."
       },
       "fashion_specific": false
     },
@@ -1865,14 +1865,14 @@
         "멘토링",
         "컨설팅"
       ],
-      "support_amount": "일반형 R&D 정부지원 최대 8억원(엔젤투자 1억원 이상 유치 전제)",
-      "support_amount_max": 800000000,
+      "support_amount": "R&D 최대 5억 + 사업화·해외마케팅 2억 (엔젤 1~2억 투자 유치 전제)",
+      "support_amount_max": 500000000,
       "apply_start": null,
       "apply_end": null,
       "apply_cycle": "수시(운영사 추천 기반)",
       "source_url": "https://www.jointips.or.kr/",
       "as_of_date": "2026-06-13",
-      "verification": "needs_review",
+      "verification": "confirmed",
       "eligibility": {
         "min_years": null,
         "max_years": 7,
@@ -1884,7 +1884,7 @@
         "region": [
           "전국"
         ],
-        "notes": "창업 7년 이내 기술창업기업+운영사 엔젤투자 유치 필요. 기술성 평가 중심으로 일반 패션 소매보다 기술 기반 아이템 적합."
+        "notes": "창업 7년 이내(신산업 등 10년). 운영사 추천 기반 수시. 2026 성장중심 개편. ※기존 'R&D 최대 8억'은 5억으로 정정."
       },
       "fashion_specific": false
     },
@@ -1913,7 +1913,7 @@
       "apply_cycle": "연 1회",
       "source_url": "https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000120120",
       "as_of_date": "2026-06-13",
-      "verification": "needs_review",
+      "verification": "confirmed",
       "eligibility": {
         "min_years": null,
         "max_years": null,
@@ -1926,7 +1926,7 @@
         "region": [
           "전국"
         ],
-        "notes": "신청일 현재 정상 영업 중 소상공인. 초기 로컬기업/성장형 트랙 구분, 금액 상이. 업력 요건·금액은 공고 확인."
+        "notes": "신청일 현재 정상 영업 중 소상공인. 2026년 舊로컬크리에이터+강한소상공인 통합 '소상공인 도약 지원 사업'. 사업화·BM고도화·마케팅(유형별 상이)."
       },
       "fashion_specific": false
     },
@@ -1967,7 +1967,7 @@
         "region": [
           "전국"
         ],
-        "notes": "만 29세 이하+생애최초(사업자등록 이력 없음) 예비창업자. 출처 2025 공고, 2026 정식 공고 확인."
+        "notes": "⚠️2025년 '생애최초 청년 예비창업형(창업중심대학)'은 2026년 신설 '모두의 창업 프로젝트'로 통합·재편(독립 사업 폐지). 만29세↓·평균4700만은 2025 정보. 신규 통합사업 세부요건 미확인 — 통합사업으로 갱신/삭제 여부 도메인 판단 필요."
       },
       "fashion_specific": false
     },
@@ -1997,7 +1997,7 @@
       "apply_cycle": "세부사업별 상이",
       "source_url": "https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000118204",
       "as_of_date": "2026-06-13",
-      "verification": "needs_review",
+      "verification": "confirmed",
       "eligibility": {
         "min_years": null,
         "max_years": 7,
@@ -2010,7 +2010,7 @@
         "region": [
           "전국"
         ],
-        "notes": "여성 (예비)창업자 및 여성기업. 업력 요건은 세부사업별 상이(창업보육실 7년 미만 등). 일정·금액 개별 공고 확인."
+        "notes": "여성 (예비)창업자 및 여성기업. 세부사업별 자격 상이(글로벌 액셀러레이팅은 업력 7년 미만). 통합공고 형태, 세부사업별 별도 모집."
       },
       "fashion_specific": false
     },
@@ -2080,7 +2080,7 @@
       "apply_cycle": "예산 소진 시까지 수시",
       "source_url": "https://www.bizinfo.go.kr/web/lay1/bbs/S1T122C128/AS/74/view.do?pblancId=PBLN_000000000103364",
       "as_of_date": "2026-06-13",
-      "verification": "needs_review",
+      "verification": "confirmed",
       "eligibility": {
         "min_years": null,
         "max_years": 7,
@@ -2093,7 +2093,7 @@
         "region": [
           "전국"
         ],
-        "notes": "기업당 한도 60억원 확인. 세부 금리·운전자금 한도는 디지털지점 재확인. 업력 7년 미만 요건은 일반 기준. 문의 1357·1811-3655."
+        "notes": "업력 7년 미만 창업기업(예비창업 포함, 신산업 창업 10년 이내). 혁신창업사업화자금 세부. 연 60억 한도(운전 5억). 2026 정책자금."
       },
       "fashion_specific": false
     },
@@ -2120,7 +2120,7 @@
       "apply_cycle": "예산 소진 시까지 수시",
       "source_url": "https://www.bizinfo.go.kr/web/lay1/bbs/S1T122C128/AS/74/view.do?pblancId=PBLN_000000000103364",
       "as_of_date": "2026-06-13",
-      "verification": "needs_review",
+      "verification": "confirmed",
       "eligibility": {
         "min_years": null,
         "max_years": null,
@@ -2133,7 +2133,7 @@
         "region": [
           "전국"
         ],
-        "notes": "내수 신시장진출 자금(수출금융과 구분). 세부 한도·금리·업력 요건은 첨부 PDF 재확인. 디지털지점 접수."
+        "notes": "성장기 기업(업력 무관). 내수기업수출기업화(수출 10만불 미만)·수출기업글로벌화(10만불 이상) 트랙 구분 — 수출실적이 핵심 변수. 연 60억 한도(운전 5억)."
       },
       "fashion_specific": false
     },
@@ -2174,7 +2174,7 @@
         "region": [
           "전국"
         ],
-        "notes": "신성장기반/혁신성장 트랙. 업력 7년 이상은 일반 기준. 세부 금리·한도는 첨부 PDF 재확인."
+        "notes": "업력 7년 이상(신성장기반 혁신성장지원자금, 시설 중심). 연 60억 한도(운전 5억). 트랙별 세분은 공고 PDF 확인."
       },
       "fashion_specific": false
     },
@@ -2234,14 +2234,14 @@
       "support_type": [
         "보증"
       ],
-      "support_amount": "보증료율 0.5~3.0%, 동일기업 일반보증한도 통상 30억원",
+      "support_amount": "보증료율 0.5~3.0%(대기업 최고 3.5%), 동일기업당 보증한도 통상 30억원(신용취약 등 15억 제한)",
       "support_amount_max": null,
       "apply_start": null,
       "apply_end": null,
       "apply_cycle": "수시",
       "source_url": "https://www.kodit.co.kr/kodit/cm/cntnts/cntntsView.do?mi=2806&cntntsId=11382",
       "as_of_date": "2026-06-13",
-      "verification": "needs_review",
+      "verification": "confirmed",
       "eligibility": {
         "min_years": null,
         "max_years": null,
@@ -2254,7 +2254,7 @@
         "region": [
           "전국"
         ],
-        "notes": "보증료율 0.5~3.0% 확인. 보증한도(통상 30억)·우대보증 요건은 영업점 상담 재확인. 패션업종 특화 한도 별도 확인."
+        "notes": "업력 무관. 2026 AI첨단산업 우대보증 등 신설, 일반 보증한도 30억 유지."
       },
       "fashion_specific": false
     },
@@ -2274,7 +2274,7 @@
       "support_type": [
         "보증"
       ],
-      "support_amount": "기술평가등급 기반 보증, 우대보증 시 최대 20억원·보증료 0.5%p 감면(첨단기술기업 기준)",
+      "support_amount": "기업당 일반 기술보증 한도 30억원(보증료 0.5~3.0%, 평균 1.18%). ※'최대 20억'은 첨단기술기업 우대보증 별도 한도",
       "support_amount_max": 2000000000,
       "apply_start": null,
       "apply_end": null,
@@ -2294,7 +2294,7 @@
         "region": [
           "전국"
         ],
-        "notes": "20억·0.5%p는 첨단기술기업 우대 기준. 일반 기술보증 최고한도(통상 30억)·기술평가 요건은 kibo.or.kr 재확인."
+        "notes": "업력 무관(창업기업 보증은 7년 이내 별도 상품). 기술평가 기반. 일반 한도 30억(첨단기술 우대보증은 별도)."
       },
       "fashion_specific": false
     },
@@ -2355,14 +2355,14 @@
       "support_type": [
         "현금"
       ],
-      "support_amount": "월보수 270만원 미만 신규가입자, 고용보험·국민연금료의 80%를 최대 36개월 지원",
+      "support_amount": "월평균보수 270만원 미만 신규가입자(국민연금·고용보험) 보험료 80%, 최대 36개월 (사업주 월 최대 ~10.4만원·근로자 ~9.9만원)",
       "support_amount_max": null,
       "apply_start": null,
       "apply_end": null,
       "apply_cycle": "수시",
       "source_url": "https://insurancesupport.or.kr",
       "as_of_date": "2026-06-13",
-      "verification": "needs_review",
+      "verification": "confirmed",
       "eligibility": {
         "min_years": null,
         "max_years": null,
@@ -2375,7 +2375,7 @@
         "region": [
           "전국"
         ],
-        "notes": "근로자 10인 미만+월보수 270만원 미만+직전 1년 미가입 신규가입자. 월 지원액은 2025 기준, 2026 금액 재확인."
+        "notes": "10인 미만 사업장. 2026 기준 270만원·80%·36개월 유지."
       },
       "fashion_specific": false
     },
@@ -2416,7 +2416,7 @@
         "region": [
           "전국"
         ],
-        "notes": "개별 소공인 및 소공인 10~25개사 협업(봉제·의류 제조 적합). 지원금액·정부보조비율은 첨부 PDF 재확인. 2026 재공고 일정(smart-factory.kr) 확인."
+        "notes": "봉제·의류 소공인 적용 가능. 2026 소상공인 지원사업 통합공고의 소공인 특화 자동화 트랙으로 흡수. 세부 접수일·금액은 통합공고 확인."
       },
       "fashion_specific": false
     },
@@ -2520,14 +2520,14 @@
         "판로",
         "입점"
       ],
-      "support_amount": null,
+      "support_amount": "민간 플랫폼 연계 집중 육성(2026 모집 1,000명)",
       "support_amount_max": null,
-      "apply_start": null,
-      "apply_end": null,
-      "apply_cycle": null,
+      "apply_start": "2026-02-26",
+      "apply_end": "2026-04-02",
+      "apply_cycle": "연 1회",
       "source_url": "https://www.bizinfo.go.kr/web/lay1/bbs/S1T122C128/AS/74/view.do?pblancId=PBLN_000000000103562",
       "as_of_date": "2026-06-13",
-      "verification": "needs_review",
+      "verification": "confirmed",
       "eligibility": {
         "min_years": null,
         "max_years": null,
@@ -2540,7 +2540,7 @@
         "region": [
           "전국"
         ],
-        "notes": "전 업종 소상공인(패션 신청 가능). 소상공인 자격 필요. 신청기간 추후 공지, 금액 통합공고 확인. 판판대로 접수."
+        "notes": "중소기업확인서상 소상공인, 전 업종(패션 소상공인 적용 가능). 2026 명칭 '온라인 브랜드 소상공인 육성사업/TOPS'. 판판대로 접수."
       },
       "fashion_specific": false
     },
