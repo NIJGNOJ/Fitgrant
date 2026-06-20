@@ -6,6 +6,7 @@ export type Category =
   | "해외수출" | "국내성장" | "전시박람회" | "디자인개발"
   | "자금" | "창업" | "R&D" | "인력";
 export type BizType = "개인" | "법인" | "예비창업";
+export type Industry = "제조" | "도소매" | "디자인서비스";
 
 export interface Eligibility {
   min_years: number | null;   // 업력 하한 (이상)
@@ -14,6 +15,7 @@ export interface Eligibility {
   max_revenue: number | null; // 매출 상한(원)
   export_required: boolean;   // 기존 수출실적 필요 여부
   region: string[];           // 허용 소재지. "전국" 포함 시 전 지역
+  industries?: string[];      // 허용 업종. 없거나 빈 배열이면 전업종(무제한)
   notes: string;
 }
 
@@ -47,10 +49,11 @@ export interface BrandProfile {
   interests: string[];          // 관심 분야 (Category)
   has_export: boolean;          // 수출 경험 유무
   region: string;               // 소재지 (서울/경기/대구/부산/전국 ...)
+  industry: Industry | null;    // 주력 업태 (선택 — 미입력이면 업종 필터 미적용)
 }
 
 export interface FailedRule {
-  rule: "업력상한" | "업력하한" | "예비창업전용" | "지역" | "사업자유형" | "수출실적";
+  rule: "업력상한" | "업력하한" | "예비창업전용" | "지역" | "사업자유형" | "수출실적" | "업종";
   detail: string;
 }
 

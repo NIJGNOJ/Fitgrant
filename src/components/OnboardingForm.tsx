@@ -2,8 +2,8 @@
 
 import { useState, type ChangeEvent } from "react";
 import { Search, Upload, Loader2, CheckCircle2, AlertTriangle } from "lucide-react";
-import type { BrandProfile, BizType } from "@/lib/types.ts";
-import type { LicenseExtract } from "@/lib/license-ocr.ts";
+import type { BrandProfile, BizType, Industry } from "@/lib/types.ts";
+import { mapIndustry, type LicenseExtract } from "@/lib/license-ocr.ts";
 import { CATEGORIES } from "@/lib/programs.ts";
 import { cn } from "@/lib/utils.ts";
 import { Card, CardContent } from "@/components/ui/card.tsx";
@@ -32,6 +32,7 @@ export default function OnboardingForm({ onSubmit }: { onSubmit: (p: BrandProfil
   const [region, setRegion] = useState("서울");
   const [hasExport, setHasExport] = useState(false);
   const [interests, setInterests] = useState<string[]>(["해외수출"]);
+  const [industry, setIndustry] = useState<Industry | "">("");
 
   const [parsing, setParsing] = useState(false);
   const [parseMsg, setParseMsg] = useState<{ ok: boolean; text: string } | null>(null);
@@ -77,6 +78,8 @@ export default function OnboardingForm({ onSubmit }: { onSubmit: (p: BrandProfil
       if (d.biz_type) setBizType(d.biz_type);
       if (d.founded_year) setFoundedYear(String(d.founded_year));
       if (d.region) setRegion(d.region);
+      const ind = d.industry ?? mapIndustry(d.uptae, d.jongmok);
+      if (ind) setIndustry(ind);
 
       const filled = [d.biz_type, d.founded_year, d.region].filter(Boolean).join(" · ");
       const job = [d.uptae, d.jongmok].filter(Boolean).join(" / ");
@@ -110,6 +113,7 @@ export default function OnboardingForm({ onSubmit }: { onSubmit: (p: BrandProfil
       interests,
       has_export: hasExport,
       region,
+      industry: industry || null,
     });
   }
 
@@ -224,6 +228,25 @@ export default function OnboardingForm({ onSubmit }: { onSubmit: (p: BrandProfil
             <ToggleGroupItem value="no">없음</ToggleGroupItem>
             <ToggleGroupItem value="yes">있음</ToggleGroupItem>
           </ToggleGroup>
+        </div>
+
+        {/* 주력 업태 (선택) */}
+        <div className="space-y-2.5">
+          <Label>
+            주력 업태 <span className="font-normal text-muted-foreground">(선택)</span>
+          </Label>
+          <ToggleGroup
+            type="single"
+            value={industry}
+            onValueChange={(v) => setIndustry((v as Industry | "") ?? "")}
+          >
+            <ToggleGroupItem value="제조">제조</ToggleGroupItem>
+            <ToggleGroupItem value="도소매">도소매</ToggleGroupItem>
+            <ToggleGroupItem value="디자인서비스">디자인·서비스</ToggleGroupItem>
+          </ToggleGroup>
+          <p className="text-xs text-muted-foreground">
+            특정 업종만 대상인 사업(예: 제조 소공인)을 걸러내는 데 쓰여요.
+          </p>
         </div>
 
         {/* 관심 분야 */}

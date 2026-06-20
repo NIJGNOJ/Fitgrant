@@ -65,6 +65,12 @@ export function hardFilter(program: Program, p: BrandProfile, today: string): Fa
     failed.push({ rule: "수출실적", detail: "기존 수출실적 필요 — 수출 경험 없음" });
   }
 
+  // 업종 제한 (사업이 특정 업종만 대상이고, 사용자가 업종을 밝혔는데 불일치할 때만)
+  // 업종 미입력(null)이면 적용하지 않는다 — 선택 필드이므로 관대하게.
+  if (e.industries && e.industries.length > 0 && p.industry && !e.industries.includes(p.industry)) {
+    failed.push({ rule: "업종", detail: `대상 업종 ${e.industries.join("·")} — 현재 ${p.industry}` });
+  }
+
   return failed;
 }
 

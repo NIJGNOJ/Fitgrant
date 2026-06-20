@@ -14,17 +14,17 @@ const profiles: { label: string; p: BrandProfile }[] = [
   {
     label: "① 예비 디자이너 (미창업, 서울, 창업·디자인 관심, 수출경험 없음)",
     p: { founded_year: null, biz_type: "예비창업", revenue: null, employees: null,
-         interests: ["창업", "디자인개발"], has_export: false, region: "서울" },
+         interests: ["창업", "디자인개발"], has_export: false, region: "서울", industry: null },
   },
   {
     label: "② 3년차 디자이너 브랜드 (법인, 서울, 해외수출·전시 관심, 수출경험 있음)",
     p: { founded_year: 2023, biz_type: "법인", revenue: 300_000_000, employees: 4,
-         interests: ["해외수출", "전시박람회"], has_export: true, region: "서울" },
+         interests: ["해외수출", "전시박람회"], has_export: true, region: "서울", industry: "도소매" },
   },
   {
     label: "③ 7년차 수출 브랜드 (법인, 경기, 해외수출·자금 관심, 수출경험 있음)",
     p: { founded_year: 2019, biz_type: "법인", revenue: 3_000_000_000, employees: 20,
-         interests: ["해외수출", "자금"], has_export: true, region: "경기" },
+         interests: ["해외수출", "자금"], has_export: true, region: "경기", industry: "제조" },
   },
 ];
 
