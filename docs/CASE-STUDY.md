@@ -56,7 +56,7 @@
 
 ## 7. 현황과 로드맵
 
-**지금**: P0 MVP + 배포 + 관심사업 저장까지 동작 — 온보딩 → 매칭 → 상세 카드 → 적합 사유/주의 자격요건 → ★관심사업 저장. 데이터 64건(confirmed 44 / needs_review 20, 2026 공고 검증 A·B·C 전 그룹 반영). **라이브 데모 [fitgrant.vercel.app](https://fitgrant.vercel.app)**, 키 없이 전체 기능 동작.
+**지금**: P0 MVP + 배포 + 관심사업 저장까지 동작 — 온보딩 → 매칭 → 상세 카드 → 적합 사유/주의 자격요건 → ★관심사업 저장. 데이터 64건(confirmed 45 / needs_review 19, 2026 공고 검증 A·B·C 전 그룹 반영). **라이브 데모 [fitgrant.vercel.app](https://fitgrant.vercel.app)**, 키 없이 전체 기능 동작.
 
 **완료**: 배포(Vercel) · 관심사업 저장(Supabase, localStorage 폴백) · needs_review 39건 전체 2026 공고 검증(A 12·B 3·C 24, confirmed 29→44).
 
