@@ -80,31 +80,32 @@ export function score(program: Program, p: BrandProfile, today: string): { score
     matched.push(`관심분야 일치: ${hits.join("·")}`);
   }
 
-  // 패션 특화 가점 (도메인 적합)
+  // 패션 특화 가점 (도메인 적합 — 이 서비스의 차별점이라 비중을 높게)
   if (program.fashion_specific) {
-    s += 10;
+    s += 14;
     matched.push("패션·디자인 특화 사업");
   }
 
-  // 수출 경험 ↔ 해외수출 사업 시너지
+  // 수출 경험 ↔ 해외수출 사업 시너지 (메인 트랙: 해외진출)
   if (program.category.includes("해외수출") && p.has_export) {
-    s += 6;
+    s += 8;
     matched.push("수출 경험 부합");
   }
 
   // 마감 임박도 / 재공고 여부 (라벨은 카드 배지가 담당, 여기선 점수만)
+  // 적합도(fit)와 시급성은 다른 축 — 시급성은 D-day 배지·임박 배너가 담당하므로 가중을 낮게.
   const d = dDay(program, today);
   if (d != null && d >= 0) {
-    if (d <= 30) s += 15;
-    else if (d <= 60) s += 8;
+    if (d <= 30) s += 8;
+    else if (d <= 60) s += 4;
   } else if (d == null) {
     if (isRecurring(program)) s += 3;
   } else {
     s += isRecurring(program) ? 2 : -8; // 재공고 사업 소폭 가점, 일회성 마감 감점
   }
 
-  // 신뢰도 가점
-  if (program.verification === "confirmed") s += 5;
+  // 신뢰도 가점 (2026 공고로 검증된 confirmed 우대)
+  if (program.verification === "confirmed") s += 7;
 
   // 지원 규모 가점
   if (program.support_amount_max != null) {
