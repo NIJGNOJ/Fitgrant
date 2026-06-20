@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { RotateCcw, ChevronDown, ChevronUp, X, Bookmark } from "lucide-react";
+import { RotateCcw, ChevronDown, ChevronUp, X, Bookmark, Clock } from "lucide-react";
 import { matchAll } from "@/lib/match.ts";
 import { programs, TODAY } from "@/lib/programs.ts";
 import { useSaved } from "@/lib/saved.ts";
@@ -27,6 +27,17 @@ export default function Home() {
   const shownEligible = showSavedOnly
     ? eligible.filter((r) => savedIds.has(r.program.id))
     : eligible;
+
+  // 저장한 사업 중 마감 임박(D-30 이내) — 가까운 순
+  const savedUrgent = results
+    .filter(
+      (r) =>
+        savedIds.has(r.program.id) &&
+        r.deadlineDday != null &&
+        r.deadlineDday >= 0 &&
+        r.deadlineDday <= 30
+    )
+    .sort((a, b) => (a.deadlineDday ?? 0) - (b.deadlineDday ?? 0));
 
   return (
     <main className="mx-auto w-full max-w-2xl flex-1 px-4 py-10 sm:py-14">
@@ -76,6 +87,33 @@ export default function Home() {
               </Button>
             </div>
           </div>
+
+          {savedIds.size > 0 &&
+            (savedUrgent.length > 0 ? (
+              <div className="rounded-xl border border-amber-200 bg-amber-50 p-3.5">
+                <p className="flex items-center gap-1.5 text-sm font-semibold text-amber-800">
+                  <Clock className="size-4" /> 저장한 사업 마감 임박 {savedUrgent.length}건
+                </p>
+                <ul className="mt-2 space-y-1">
+                  {savedUrgent.slice(0, 5).map((r) => (
+                    <li
+                      key={r.program.id}
+                      className="flex items-center justify-between gap-2 text-sm"
+                    >
+                      <span className="truncate text-amber-900">{r.program.title}</span>
+                      <span className="shrink-0 font-bold text-amber-700">
+                        D-{r.deadlineDday}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : (
+              <div className="rounded-xl border bg-muted/40 p-3 text-sm text-muted-foreground">
+                <Clock className="mr-1 inline size-4 align-text-bottom" /> 저장한{" "}
+                {savedIds.size}건은 마감 임박 사업이 없어요 (상시·정기·다음 회차 모집 위주).
+              </div>
+            ))}
 
           {shownEligible.map((r) => (
             <ResultCard
