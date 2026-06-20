@@ -3,6 +3,7 @@
 import { useState, type ChangeEvent } from "react";
 import { Search, Upload, Loader2, CheckCircle2, AlertTriangle } from "lucide-react";
 import type { BrandProfile, BizType } from "@/lib/types.ts";
+import type { LicenseExtract } from "@/lib/license-ocr.ts";
 import { CATEGORIES } from "@/lib/programs.ts";
 import { cn } from "@/lib/utils.ts";
 import { Card, CardContent } from "@/components/ui/card.tsx";
@@ -37,7 +38,8 @@ export default function OnboardingForm({ onSubmit }: { onSubmit: (p: BrandProfil
 
   const isPre = bizType === "예비창업";
 
-  // 사업자등록증 이미지 → Claude Vision 으로 biz_type/설립연도/소재지 자동 채움.
+  // 사업자등록증 이미지 → biz_type/설립연도/소재지 자동 채움.
+  // 점진적 향상: ANTHROPIC_API_KEY 있으면 Claude Vision(정확), 없으면 무료 Tesseract OCR 폴백.
   // 추출값은 폼에 채워질 뿐, 사용자가 검토·수정한 뒤 제출한다(환각 가드).
   async function onLicense(e: ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
@@ -46,47 +48,57 @@ export default function OnboardingForm({ onSubmit }: { onSubmit: (p: BrandProfil
     setParsing(true);
     setParseMsg(null);
     try {
-      const image = await new Promise<string>((resolve, reject) => {
-        const r = new FileReader();
-        r.onload = () => resolve(String(r.result).split(",")[1] ?? "");
-        r.onerror = reject;
-        r.readAsDataURL(file);
-      });
-      const res = await fetch("/api/parse-license", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ image, mediaType: file.type }),
-      });
-      if (res.status === 503) {
-        setParseMsg({ ok: false, text: "자동 채우기는 AI 키가 설정된 환경에서만 동작해요. 아래에 직접 입력해주세요." });
-        return;
+      let d: LicenseExtract | null = null;
+      let source = "";
+
+      // 1) Claude Vision 시도 (키 있을 때만 200, 없으면 503)
+      try {
+        const image = await fileToBase64(file);
+        const res = await fetch("/api/parse-license", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ image, mediaType: file.type }),
+        });
+        if (res.ok) {
+          d = (await res.json()) as LicenseExtract;
+          source = "AI";
+        }
+      } catch {
+        // 무시하고 OCR 폴백
       }
-      if (!res.ok) {
-        setParseMsg({ ok: false, text: "등록증을 읽지 못했어요. 아래에 직접 입력해주세요." });
-        return;
+
+      // 2) 폴백: 무료 브라우저 OCR (Tesseract)
+      if (!d) {
+        const { ocrLicense } = await import("@/lib/license-ocr.ts");
+        d = await ocrLicense(file);
+        source = "무료 OCR";
       }
-      const d = (await res.json()) as {
-        biz_type?: BizType | null;
-        founded_year?: number | null;
-        region?: string | null;
-        uptae?: string | null;
-        jongmok?: string | null;
-      };
+
       if (d.biz_type) setBizType(d.biz_type);
       if (d.founded_year) setFoundedYear(String(d.founded_year));
       if (d.region) setRegion(d.region);
+
       const filled = [d.biz_type, d.founded_year, d.region].filter(Boolean).join(" · ");
       const job = [d.uptae, d.jongmok].filter(Boolean).join(" / ");
       setParseMsg(
         filled
-          ? { ok: true, text: `자동으로 채웠어요: ${filled}${job ? ` · 업태/종목 ${job}` : ""}. 아래에서 확인·수정하세요.` }
-          : { ok: false, text: "등록증에서 읽을 수 있는 항목이 없었어요. 직접 입력해주세요." }
+          ? { ok: true, text: `자동으로 채웠어요 (${source}): ${filled}${job ? ` · 업태/종목 ${job}` : ""}. 아래에서 확인·수정하세요.` }
+          : { ok: false, text: "등록증에서 항목을 읽지 못했어요. 사진이 선명한지 확인하거나 아래에 직접 입력해주세요." }
       );
     } catch {
       setParseMsg({ ok: false, text: "처리 중 오류가 났어요. 직접 입력해주세요." });
     } finally {
       setParsing(false);
     }
+  }
+
+  function fileToBase64(file: File): Promise<string> {
+    return new Promise((resolve, reject) => {
+      const r = new FileReader();
+      r.onload = () => resolve(String(r.result).split(",")[1] ?? "");
+      r.onerror = reject;
+      r.readAsDataURL(file);
+    });
   }
 
   function submit() {
