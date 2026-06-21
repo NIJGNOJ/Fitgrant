@@ -7,6 +7,7 @@
       ([supabase/README.md](../supabase/README.md) 참고). *지금 안 해도 매칭/화면 설계는 진행 가능.*
 
 ## 곧 필요한 것
+- [ ] **(RLS 강화) Supabase 익명 인증 켜기** — 대시보드 > Authentication > Providers > **"Anonymous sign-ins" 활성화**. 그러면 브라우저마다 `auth.uid()`가 부여돼 본인 행만 접근(진짜 격리). 그 후 기존 프로젝트는 **`supabase/rls-upgrade.sql` 실행**(신규 프로젝트는 최신 `schema.sql`에 이미 포함). **선택**: 안 켜도 앱은 localStorage로 그대로 동작(익명 인증 실패 시 자동 폴백 — 콘솔에 안내 warn만).
 - [ ] **Anthropic API 키 발급** (console.anthropic.com) — Claude 설명 레이어 ON 스위치. **선택**: 안 넣으면 룰 기반 설명으로 완전히 동작하고, 넣으면 "왜 적합한가요"가 Claude(Haiku)로 더 자연스럽게 재작성됨. `.env.local.example`를 `.env.local`로 복사 후 `ANTHROPIC_API_KEY`에 값 넣기.
 - [ ] **데이터 도메인 검토** — `needs_review` 39건의 2026 일정·자격을 실제 공고로 확인. **체크리스트 준비됨**: [docs/needs-review-checklist.md](needs-review-checklist.md) (A.패션특화 12 / B.대표 3 / C.범용 24, 공고링크 포함). A 그룹만 먼저 채워도 매칭 품질 ↑. 다 채우면 Claude가 seed에 반영. *사용자 도메인 전문성이 가장 빛나는 부분.*
 - [ ] **매칭 가중치 판단** — `docs/matching-logic.md`의 점수 가중치가 합리적인지(예: 패션특화 +10이 적절한지) 도메인 감각으로 피드백.

@@ -1,5 +1,5 @@
 -- FitGrant DB 스키마 (Supabase / PostgreSQL)
--- schema_version 0.3
+-- schema_version 0.4 — RLS 익명 인증(auth.uid) 격리
 -- 실행: Supabase 대시보드 > SQL Editor 에 붙여넣어 실행. seed.sql 은 이 파일 실행 후 적재.
 
 -- ─────────────────────────────────────────────
@@ -39,7 +39,8 @@ create index if not exists idx_programs_fashion      on programs (fashion_specif
 -- ─────────────────────────────────────────────
 create table if not exists brand_profiles (
   id            uuid primary key default gen_random_uuid(),
-  session_id    text,                       -- 비로그인 세션 식별자
+  user_id       uuid not null default auth.uid(),  -- 익명 인증 사용자(auth.uid). 본인 행만 접근
+  session_id    text,                       -- (구) 비로그인 세션 식별자. 익명 인증 도입 후 보조용
   founded_year  int,                        -- 설립연도 → 업력 계산
   biz_type      text,                       -- 개인 / 법인 / 예비창업
   revenue_range text,                       -- 매출 구간 코드
@@ -51,6 +52,7 @@ create table if not exists brand_profiles (
 );
 
 create index if not exists idx_brand_profiles_session on brand_profiles (session_id);
+create index if not exists idx_brand_profiles_user    on brand_profiles (user_id);
 
 -- ─────────────────────────────────────────────
 -- 3) saved_programs : 관심 사업 저장 / 마감 알림 대상
@@ -82,17 +84,34 @@ create table if not exists match_explanations (
 create index if not exists idx_match_expl_hash on match_explanations (profile_hash);
 
 -- ─────────────────────────────────────────────
--- RLS (Row Level Security)
---   programs : 공개 읽기 전용
---   그 외    : MVP(비로그인)용 익명 허용 정책. 운영 전 반드시 세션/유저 단위로 강화할 것.
+-- RLS (Row Level Security) — 익명 인증(auth.uid()) 기준 본인 행 격리
+--   programs          : 공개 읽기 전용
+--   brand_profiles    : 본인(auth.uid()) 행만 CRUD
+--   saved_programs    : 본인 프로필에 속한 행만 CRUD (parent 소유 확인)
+--   match_explanations: 서버(service_role) 전용 캐시 — 브라우저(anon/authenticated) 접근 차단
+--   ※ 익명 인증을 켜려면: Supabase 대시보드 > Authentication > Providers > "Anonymous sign-ins" 활성화.
+--   ※ 클라이언트가 signInAnonymously() 실패 시 localStorage 로 폴백(점진적 향상).
 -- ─────────────────────────────────────────────
 alter table programs           enable row level security;
 alter table brand_profiles     enable row level security;
 alter table saved_programs     enable row level security;
 alter table match_explanations enable row level security;
 
-create policy "programs public read"        on programs           for select using (true);
-create policy "profiles anon all (MVP)"     on brand_profiles     for all using (true) with check (true);
-create policy "saved anon all (MVP)"        on saved_programs     for all using (true) with check (true);
-create policy "match_expl anon all (MVP)"   on match_explanations for all using (true) with check (true);
--- TODO: 운영 전 brand_profiles/saved_programs 를 session_id 또는 auth.uid() 기준 정책으로 교체.
+create policy "programs public read" on programs for select using (true);
+
+-- brand_profiles: 본인 행만
+create policy "profiles own select" on brand_profiles for select using (user_id = auth.uid());
+create policy "profiles own insert" on brand_profiles for insert with check (user_id = auth.uid());
+create policy "profiles own update" on brand_profiles for update using (user_id = auth.uid()) with check (user_id = auth.uid());
+create policy "profiles own delete" on brand_profiles for delete using (user_id = auth.uid());
+
+-- saved_programs: 본인 소유 프로필의 행만 (parent brand_profiles.user_id 확인)
+create policy "saved own select" on saved_programs for select
+  using (exists (select 1 from brand_profiles bp where bp.id = saved_programs.profile_id and bp.user_id = auth.uid()));
+create policy "saved own insert" on saved_programs for insert
+  with check (exists (select 1 from brand_profiles bp where bp.id = saved_programs.profile_id and bp.user_id = auth.uid()));
+create policy "saved own delete" on saved_programs for delete
+  using (exists (select 1 from brand_profiles bp where bp.id = saved_programs.profile_id and bp.user_id = auth.uid()));
+
+-- match_explanations: 서버(service_role)만 사용하는 캐시 → 브라우저 정책 없음(=차단).
+--   service_role 키는 RLS 를 우회하므로 별도 정책 불필요. anon/authenticated 는 접근 불가.

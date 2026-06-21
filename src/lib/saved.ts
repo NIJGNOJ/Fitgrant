@@ -7,16 +7,27 @@ import { supabase, hasSupabase } from "./supabase.ts";
 import type { BrandProfile } from "./types.ts";
 
 const LS_SAVED = "fitgrant_saved";
-const LS_SESSION = "fitgrant_session";
 const LS_PROFILE = "fitgrant_profile_id";
 
-function getSessionId(): string {
-  let s = localStorage.getItem(LS_SESSION);
-  if (!s) {
-    s = crypto.randomUUID();
-    localStorage.setItem(LS_SESSION, s);
+// 익명 인증: 브라우저마다 auth.uid() 를 부여해 본인 행만 접근(RLS 격리).
+// 세션은 supabase-js 가 localStorage 에 보존 → 재방문 시 동일 사용자로 복원.
+// "Anonymous sign-ins" 미활성/실패 시 false 반환 → 호출부가 localStorage 폴백(점진적 향상).
+let authReady: Promise<boolean> | null = null;
+async function ensureAuth(): Promise<boolean> {
+  if (!supabase) return false;
+  if (!authReady) {
+    authReady = (async () => {
+      const { data } = await supabase!.auth.getSession();
+      if (data.session) return true;
+      const { error } = await supabase!.auth.signInAnonymously();
+      if (error) {
+        console.warn("[saved] 익명 인증 실패, localStorage 폴백:", error.message);
+        return false;
+      }
+      return true;
+    })();
   }
-  return s;
+  return authReady;
 }
 
 function lsGet(): string[] {
@@ -31,17 +42,18 @@ function lsSet(ids: string[]): void {
   localStorage.setItem(LS_SAVED, JSON.stringify(ids));
 }
 
-// session_id 로 brand_profile 을 확보(있으면 재사용, 없으면 생성). profile_id 는 캐시.
+// 익명 인증 사용자의 brand_profile 을 확보(있으면 재사용, 없으면 생성). profile_id 는 캐시.
+// user_id 는 DB 기본값 auth.uid() 로 자동 설정되고, RLS 가 본인 행만 노출한다.
 async function ensureProfileId(profile: BrandProfile): Promise<string | null> {
   if (!supabase) return null;
+  if (!(await ensureAuth())) return null; // 익명 인증 실패 → 폴백
   const cached = localStorage.getItem(LS_PROFILE);
   if (cached) return cached;
 
-  const session_id = getSessionId();
+  // RLS 가 본인(auth.uid) 행만 반환하므로 별도 필터 없이 조회.
   const { data: existing } = await supabase
     .from("brand_profiles")
     .select("id")
-    .eq("session_id", session_id)
     .limit(1)
     .maybeSingle();
 
@@ -50,12 +62,12 @@ async function ensureProfileId(profile: BrandProfile): Promise<string | null> {
     const { data, error } = await supabase
       .from("brand_profiles")
       .insert({
-        session_id,
         founded_year: profile.founded_year,
         biz_type: profile.biz_type,
         interests: profile.interests,
         has_export: profile.has_export,
         region: profile.region,
+        employees: profile.employees,
       })
       .select("id")
       .single();
