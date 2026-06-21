@@ -16,6 +16,7 @@ export interface Eligibility {
   export_required: boolean;   // 기존 수출실적 필요 여부
   region: string[];           // 허용 소재지. "전국" 포함 시 전 지역
   industries?: string[];      // 허용 업종. 없거나 빈 배열이면 전업종(무제한)
+  small_biz_only?: boolean;   // 소상공인 전용. true면 상시근로자 기준(제조 10인·그외 5인 미만)으로 필터
   notes: string;
 }
 
@@ -53,7 +54,7 @@ export interface BrandProfile {
 }
 
 export interface FailedRule {
-  rule: "업력상한" | "업력하한" | "예비창업전용" | "지역" | "사업자유형" | "수출실적" | "업종";
+  rule: "업력상한" | "업력하한" | "예비창업전용" | "지역" | "사업자유형" | "수출실적" | "업종" | "고용규모";
   detail: string;
 }
 

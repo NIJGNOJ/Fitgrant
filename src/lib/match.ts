@@ -71,6 +71,15 @@ export function hardFilter(program: Program, p: BrandProfile, today: string): Fa
     failed.push({ rule: "업종", detail: `대상 업종 ${e.industries.join("·")} — 현재 ${p.industry}` });
   }
 
+  // 소상공인 전용 — 상시근로자 수 기준 (제조·광업·건설·운수 10인 미만, 그 외 5인 미만).
+  // 근로자 수 미입력(null)이면 적용하지 않는다(관대). 업종 미입력이면 더 관대한 10인 기준 사용.
+  if (e.small_biz_only && p.employees != null) {
+    const limit = p.industry === "제조" || p.industry == null ? 10 : 5;
+    if (p.employees >= limit) {
+      failed.push({ rule: "고용규모", detail: `소상공인(상시근로자 ${limit}인 미만) 대상 — 현재 ${p.employees}인` });
+    }
+  }
+
   return failed;
 }
 
@@ -112,6 +121,17 @@ export function score(program: Program, p: BrandProfile, today: string): { score
 
   // 신뢰도 가점 (2026 공고로 검증된 confirmed 우대)
   if (program.verification === "confirmed") s += 7;
+
+  // 매출 규모 ↔ 사업 성격 적합 (영세·소규모 기업 ↔ 소상공인/창업/자금 지원).
+  // 매출 미입력(null)이면 미적용. 감점 없이 가점만 — 시그널 보조용.
+  if (p.revenue != null) {
+    const earlyStage = program.eligibility.small_biz_only ||
+      program.category.some((c) => c === "창업" || c === "자금");
+    if (earlyStage && p.revenue < 1_000_000_000) {
+      s += 3;
+      matched.push("소규모 기업에 적합한 지원");
+    }
+  }
 
   // 지원 규모 가점
   if (program.support_amount_max != null) {

@@ -33,6 +33,8 @@ export default function OnboardingForm({ onSubmit }: { onSubmit: (p: BrandProfil
   const [hasExport, setHasExport] = useState(false);
   const [interests, setInterests] = useState<string[]>(["해외수출"]);
   const [industry, setIndustry] = useState<Industry | "">("");
+  const [employees, setEmployees] = useState<string>("");
+  const [revenueEok, setRevenueEok] = useState<string>(""); // 연매출 (억원 단위)
 
   const [parsing, setParsing] = useState(false);
   const [parseMsg, setParseMsg] = useState<{ ok: boolean; text: string } | null>(null);
@@ -108,8 +110,8 @@ export default function OnboardingForm({ onSubmit }: { onSubmit: (p: BrandProfil
     onSubmit({
       biz_type: bizType,
       founded_year: isPre ? null : Number(foundedYear) || null,
-      revenue: null,
-      employees: null,
+      revenue: revenueEok.trim() === "" ? null : Math.round(Number(revenueEok) * 100_000_000) || null,
+      employees: employees.trim() === "" ? null : Number(employees),
       interests,
       has_export: hasExport,
       region,
@@ -247,6 +249,49 @@ export default function OnboardingForm({ onSubmit }: { onSubmit: (p: BrandProfil
           <p className="text-xs text-muted-foreground">
             특정 업종만 대상인 사업(예: 제조 소공인)을 걸러내는 데 쓰여요.
           </p>
+        </div>
+
+        {/* 규모 (선택) — 상시근로자 / 연매출 */}
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+          <div className="space-y-2.5">
+            <Label htmlFor="employees">
+              상시근로자 수 <span className="font-normal text-muted-foreground">(선택)</span>
+            </Label>
+            <div className="flex items-center gap-2">
+              <Input
+                id="employees"
+                type="number"
+                inputMode="numeric"
+                min={0}
+                placeholder="예: 3"
+                value={employees}
+                onChange={(e) => setEmployees(e.target.value)}
+                className="w-28"
+              />
+              <span className="text-sm text-muted-foreground">명</span>
+            </div>
+            <p className="text-xs text-muted-foreground">소상공인 전용 사업 판별에 쓰여요.</p>
+          </div>
+          <div className="space-y-2.5">
+            <Label htmlFor="revenue">
+              연매출 <span className="font-normal text-muted-foreground">(선택)</span>
+            </Label>
+            <div className="flex items-center gap-2">
+              <Input
+                id="revenue"
+                type="number"
+                inputMode="decimal"
+                min={0}
+                step="0.1"
+                placeholder="예: 1.5"
+                value={revenueEok}
+                onChange={(e) => setRevenueEok(e.target.value)}
+                className="w-28"
+              />
+              <span className="text-sm text-muted-foreground">억원</span>
+            </div>
+            <p className="text-xs text-muted-foreground">규모에 맞는 사업 적합도 가점에 쓰여요.</p>
+          </div>
         </div>
 
         {/* 관심 분야 */}
