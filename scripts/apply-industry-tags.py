@@ -15,6 +15,12 @@ PATCH = {
     "mss-smart-manufacturing-sogongin-2025": {"eligibility": {"industries": ["제조"]}},
     # 디자인전문기업육성: 산업디자인전문회사 신고기업
     "kidp-design-firm-fostering-globalization-2025": {"eligibility": {"industries": ["디자인서비스"]}},
+    # 디자인주도 제조혁신: "중소·중견 제조기업 및 디자인전문기업" 대상 (도소매 제외)
+    "kidp-design-led-manufacturing-innovation-2025": {"eligibility": {"industries": ["제조", "디자인서비스"]}},
+    # 섬유·패션 친환경 글로벌 인증(경기): GOTS·OEKO-TEX 등 제품 인증 = 섬유·의류 생산기업
+    "gyeonggi-textile-fashion-eco-cert-2025": {"eligibility": {"industries": ["제조"]}},
+    # 디자인 시장개척단: "디자인전문회사 또는 자체개발 제품 수출 기업" (단순 도소매 제외)
+    "kidp-design-market-pioneer-2025": {"eligibility": {"industries": ["제조", "디자인서비스"]}},
 }
 
 
