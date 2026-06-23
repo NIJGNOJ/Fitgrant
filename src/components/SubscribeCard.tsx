@@ -43,7 +43,7 @@ export default function SubscribeCard({ programIds }: { programIds: string[] }) 
         return;
       }
       setState("ok");
-      setMsg(`관심 사업 ${programIds.length}건의 마감을 D-7·D-3·D-1에 ${email.trim()} 으로 알려드릴게요.`);
+      setMsg(`관심 사업 ${programIds.length}건의 마감을 D-30·D-7·D-3·D-1에 ${email.trim()} 으로 알려드릴게요.`);
     } catch {
       setState("error");
       setMsg("네트워크 오류예요. 잠시 후 다시 시도해 주세요.");
@@ -66,7 +66,7 @@ export default function SubscribeCard({ programIds }: { programIds: string[] }) 
         <Mail className="size-4 text-brand" /> 마감 알림 받기
       </p>
       <p className="mt-1 text-xs text-muted-foreground">
-        저장한 관심 사업 {programIds.length}건의 마감이 다가오면 (D-7·D-3·D-1) 이메일로 알려드려요.
+        저장한 관심 사업 {programIds.length}건의 마감이 다가오면 (D-30·D-7·D-3·D-1) 이메일로 알려드려요.
       </p>
       <form onSubmit={submit} className="mt-2.5 flex gap-2">
         <Input

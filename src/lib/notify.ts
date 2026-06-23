@@ -3,8 +3,8 @@
 import type { Program } from "./types.ts";
 import { dDay } from "./match.ts";
 
-// 알림 발송 시점(마감까지 남은 일수). D-7 → D-3 → D-1 세 번.
-export const MILESTONES = [7, 3, 1] as const;
+// 알림 발송 시점(마감까지 남은 일수). D-30 → D-7 → D-3 → D-1 네 번.
+export const MILESTONES = [30, 7, 3, 1] as const;
 
 export interface DeadlineHit {
   program: Program;

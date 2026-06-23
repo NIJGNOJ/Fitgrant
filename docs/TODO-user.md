@@ -11,7 +11,7 @@
 - [ ] **Anthropic API 키 발급** (console.anthropic.com) — Claude 설명 레이어 ON 스위치. **선택**: 안 넣으면 룰 기반 설명으로 완전히 동작하고, 넣으면 "왜 적합한가요"가 Claude(Haiku)로 더 자연스럽게 재작성됨. `.env.local.example`를 `.env.local`로 복사 후 `ANTHROPIC_API_KEY`에 값 넣기.
 - [ ] **데이터 도메인 검토** — `needs_review` 39건의 2026 일정·자격을 실제 공고로 확인. **체크리스트 준비됨**: [docs/needs-review-checklist.md](needs-review-checklist.md) (A.패션특화 12 / B.대표 3 / C.범용 24, 공고링크 포함). A 그룹만 먼저 채워도 매칭 품질 ↑. 다 채우면 Claude가 seed에 반영. *사용자 도메인 전문성이 가장 빛나는 부분.*
 - [ ] **매칭 가중치 판단** — `docs/matching-logic.md`의 점수 가중치가 합리적인지(예: 패션특화 +10이 적절한지) 도메인 감각으로 피드백.
-- [ ] **(마감 알림 이메일) 활성화** — 아래 3개를 모두 채우면 저장한 관심사업의 마감(D-7·D-3·D-1)에 이메일이 자동 발송됨. **선택**: 안 채우면 구독 폼은 "비활성화" 안내만 하고 앱은 정상 동작.
+- [ ] **(마감 알림 이메일) 활성화** — 아래 3개를 모두 채우면 저장한 관심사업의 마감(D-30·D-7·D-3·D-1)에 이메일이 자동 발송됨. **선택**: 안 채우면 구독 폼은 "비활성화" 안내만 하고 앱은 정상 동작.
   1. **Supabase 마감 알림 테이블 생성** — 대시보드 > SQL Editor 에서 **`supabase/deadline-notifications.sql` 실행** (신규 프로젝트는 최신 `schema.sql`에 이미 포함).
   2. **Supabase service_role 키** — 대시보드 > Settings > API 의 `service_role` 키를 `.env.local`의 `SUPABASE_SERVICE_ROLE_KEY`에 넣기. ⚠️ 절대 깃/클라이언트에 노출 금지(서버 전용).
   3. **Resend API 키** — [resend.com](https://resend.com) 무료 가입(월 3,000건) → API 키를 `.env.local`의 `RESEND_API_KEY`에 넣기. (도메인 인증 전엔 발신주소 `onboarding@resend.dev` 사용)
