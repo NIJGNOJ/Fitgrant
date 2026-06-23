@@ -1,5 +1,5 @@
 -- FitGrant DB 스키마 (Supabase / PostgreSQL)
--- schema_version 0.4 — RLS 익명 인증(auth.uid) 격리
+-- schema_version 0.5 — 마감 알림 이메일 구독(deadline_subscriptions/deadline_sent) 추가
 -- 실행: Supabase 대시보드 > SQL Editor 에 붙여넣어 실행. seed.sql 은 이 파일 실행 후 적재.
 
 -- ─────────────────────────────────────────────
@@ -84,6 +84,31 @@ create table if not exists match_explanations (
 create index if not exists idx_match_expl_hash on match_explanations (profile_hash);
 
 -- ─────────────────────────────────────────────
+-- 5) deadline_subscriptions : 마감 알림 이메일 구독 (서버 service_role 전용)
+--    이메일 1개 → 관심사업 전체(program_ids) 마감 알림. D-7/3/1 발송.
+-- 6) deadline_sent : 발송 멱등 로그 (같은 사업·마일스톤 중복 발송 방지)
+-- ─────────────────────────────────────────────
+create table if not exists deadline_subscriptions (
+  id           uuid primary key default gen_random_uuid(),
+  email        text not null unique,
+  program_ids  text[] not null default '{}',
+  created_at   timestamptz not null default now(),
+  updated_at   timestamptz not null default now()
+);
+
+create table if not exists deadline_sent (
+  id              uuid primary key default gen_random_uuid(),
+  subscription_id uuid not null references deadline_subscriptions(id) on delete cascade,
+  program_id      text not null,
+  milestone       int not null,                 -- 7 / 3 / 1 (D-day)
+  sent_on         date not null default current_date,
+  created_at      timestamptz not null default now(),
+  unique (subscription_id, program_id, milestone)
+);
+
+create index if not exists idx_deadline_sent_sub on deadline_sent (subscription_id);
+
+-- ─────────────────────────────────────────────
 -- RLS (Row Level Security) — 익명 인증(auth.uid()) 기준 본인 행 격리
 --   programs          : 공개 읽기 전용
 --   brand_profiles    : 본인(auth.uid()) 행만 CRUD
@@ -92,10 +117,13 @@ create index if not exists idx_match_expl_hash on match_explanations (profile_ha
 --   ※ 익명 인증을 켜려면: Supabase 대시보드 > Authentication > Providers > "Anonymous sign-ins" 활성화.
 --   ※ 클라이언트가 signInAnonymously() 실패 시 localStorage 로 폴백(점진적 향상).
 -- ─────────────────────────────────────────────
-alter table programs           enable row level security;
-alter table brand_profiles     enable row level security;
-alter table saved_programs     enable row level security;
-alter table match_explanations enable row level security;
+alter table programs               enable row level security;
+alter table brand_profiles         enable row level security;
+alter table saved_programs         enable row level security;
+alter table match_explanations     enable row level security;
+alter table deadline_subscriptions enable row level security;
+alter table deadline_sent          enable row level security;
+-- deadline_subscriptions/deadline_sent: 정책 없음 = 브라우저 차단, 서버(service_role) 전용.
 
 create policy "programs public read" on programs for select using (true);
 

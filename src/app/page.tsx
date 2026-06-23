@@ -8,6 +8,7 @@ import { useSaved } from "@/lib/saved.ts";
 import type { BrandProfile } from "@/lib/types.ts";
 import OnboardingForm from "@/components/OnboardingForm.tsx";
 import ResultCard from "@/components/ResultCard.tsx";
+import SubscribeCard from "@/components/SubscribeCard.tsx";
 import { Badge } from "@/components/ui/badge.tsx";
 import { Button } from "@/components/ui/button.tsx";
 import { Card } from "@/components/ui/card.tsx";
@@ -114,6 +115,8 @@ export default function Home() {
                 {savedIds.size}건은 마감 임박 사업이 없어요 (상시·정기·다음 회차 모집 위주).
               </div>
             ))}
+
+          {savedIds.size > 0 && <SubscribeCard programIds={[...savedIds]} />}
 
           {shownEligible.map((r) => (
             <ResultCard
